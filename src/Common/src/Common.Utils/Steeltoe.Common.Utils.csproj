@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <Description>Steeltoe common utility library</Description>
+    <PackageTags>NET Core;NET Framework</PackageTags>
+  </PropertyGroup>
+
+  <Import Project="..\..\..\..\versions.props" />
+  <Import Project="..\..\..\..\sharedproject.props" />
+
+  <!--
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="$(MicrosoftExtensionsVersion)" />
+  </ItemGroup>
+  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Steeltoe.Common.csproj" />
+  </ItemGroup>
+</Project>
