@@ -12,12 +12,16 @@ namespace Steeltoe.Common.Utils.Test.Diagnostics
 {
     public class CommandExecutorTest
     {
-        private readonly CommandExecutor _commandExecutor = new ();
-
         [Fact]
         public async void SuccessfulCommandShouldReturn0()
         {
-            var result = await _commandExecutor.ExecuteAsync("dotnet --help");
+            // Arrange
+            var executor = new CommandExecutor();
+
+            // Act
+            var result = await executor.ExecuteAsync("dotnet --help");
+
+            // Assert
             result.ExitCode.Should().Be(0);
             result.Output.Should().Contain("Usage: dotnet");
         }
@@ -25,7 +29,13 @@ namespace Steeltoe.Common.Utils.Test.Diagnostics
         [Fact]
         public async void UnsuccessfulCommandShouldNotReturn0()
         {
-            var result = await _commandExecutor.ExecuteAsync("dotnet --no-such-option");
+            // Arrange
+            var executor = new CommandExecutor();
+
+            // Act
+            var result = await executor.ExecuteAsync("dotnet --no-such-option");
+
+            // Assert
             result.ExitCode.Should().NotBe(0);
             result.Error.Should().Contain("Unknown option: --no-such-option");
         }
@@ -33,7 +43,13 @@ namespace Steeltoe.Common.Utils.Test.Diagnostics
         [Fact]
         public async void UnknownCommandShouldThrowException()
         {
-            Func<Task> act = async () => { await _commandExecutor.ExecuteAsync("no-such-command"); };
+            // Arrange
+            var executor = new CommandExecutor();
+
+            // Act
+            Func<Task> act = async () => { await executor.ExecuteAsync("no-such-command"); };
+
+            // Assert
             await act.Should().ThrowAsync<CommandException>().WithMessage("'no-such-command' failed to start*");
         }
     }
