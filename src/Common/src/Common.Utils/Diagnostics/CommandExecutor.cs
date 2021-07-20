@@ -128,7 +128,7 @@ namespace Steeltoe.Common.Utils.Diagnostics
             }
 
             _logger?.LogDebug("[{CommandId}] timed out: {TimeOut}ms", commandId, timeout);
-            throw new Exception($"'{process.StartInfo.FileName} {process.StartInfo.Arguments}' timed out");
+            throw new CommandException($"'{process.StartInfo.FileName} {process.StartInfo.Arguments}' timed out");
         }
     }
 }

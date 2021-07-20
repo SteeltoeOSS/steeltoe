@@ -12,6 +12,12 @@ namespace Steeltoe.Common.Utils.Diagnostics
     public class CommandException : Exception
     {
         /// <inheritdoc cref="Exception"/>
+        public CommandException(string message)
+            : base(message)
+        {
+        }
+
+        /// <inheritdoc cref="Exception"/>
         public CommandException(string message, Exception innerException)
             : base(message, innerException)
         {
