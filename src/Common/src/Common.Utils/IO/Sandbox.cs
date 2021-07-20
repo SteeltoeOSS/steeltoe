@@ -12,7 +12,9 @@ namespace Steeltoe.Common.Utils.IO
     /// </summary>
     public class Sandbox : TempDirectory
     {
+        /// <summary>
         /// The default sandbox prefix ("Sandbox-").
+        /// </summary>
         public const string DefaultPrefix = "Sandbox-";
 
         /// <inheritdoc cref="TempDirectory"/>
@@ -51,10 +53,9 @@ namespace Steeltoe.Common.Utils.IO
         /// <returns>Full path name of created file.</returns>
         public string CreateFile(string path, string text = "")
         {
-
             var fullPath = ResolvePath(path);
             var parentDir = Directory.GetParent(fullPath)?.FullName;
-            Directory.CreateDirectory(parentDir);
+            Directory.CreateDirectory(parentDir!);
             File.WriteAllText(fullPath, text);
             return fullPath;
         }
