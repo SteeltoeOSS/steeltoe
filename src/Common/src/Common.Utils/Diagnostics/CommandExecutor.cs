@@ -83,7 +83,7 @@ namespace Steeltoe.Common.Utils.Diagnostics
                 if (!process.Start())
                 {
                     _logger?.LogDebug("[{CommandId}] failed to start: {Error}", commandId, "no details available");
-                    throw new Exception($"'{command}' failed to start; no details available");
+                    throw new CommandException($"'{command}' failed to start; no details available");
                 }
             }
             catch (Exception ex)
