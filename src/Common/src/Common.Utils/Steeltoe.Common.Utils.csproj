@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
-    <Description>Steeltoe common utility library</Description>
+    <Description>Steeltoe common utility libraries</Description>
     <PackageTags></PackageTags>
   </PropertyGroup>
 
