@@ -19,7 +19,7 @@ namespace Steeltoe.Common.Utils.IO
         protected TempPath(string prefix = null)
         {
             Name = $"{prefix ?? string.Empty}{Guid.NewGuid()}";
-            FullPath = $"{Path.GetTempPath()}{Path.DirectorySeparatorChar}{Name}";
+            FullPath = Path.Combine(Path.GetTempPath(), Name);
             Initialize();
         }
 
