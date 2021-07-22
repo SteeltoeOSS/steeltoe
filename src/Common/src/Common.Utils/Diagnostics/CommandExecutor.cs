@@ -29,7 +29,7 @@ namespace Steeltoe.Common.Utils.Diagnostics
         /// <inheritdoc/>
         public async Task<CommandResult> ExecuteAsync(string command, string workingDirectory = null, int timeout = -1)
         {
-            var commandId = ++_commandCounter;
+            var commandId = NextCommandId();
             using var process = new Process();
             var arguments = command.Split(new[] { ' ' }, 2);
             process.StartInfo.FileName = arguments[0];
@@ -129,6 +129,11 @@ namespace Steeltoe.Common.Utils.Diagnostics
 
             _logger?.LogDebug("[{CommandId}] timed out: {TimeOut}ms", commandId, timeout);
             throw new CommandException($"'{process.StartInfo.FileName} {process.StartInfo.Arguments}' timed out");
+        }
+
+        private static int NextCommandId()
+        {
+            return ++_commandCounter;
         }
     }
 }
