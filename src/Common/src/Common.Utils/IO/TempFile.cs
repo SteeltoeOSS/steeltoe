@@ -31,8 +31,6 @@ namespace Steeltoe.Common.Utils.IO
         /// <inheritdoc/>
         protected override void Dispose(bool disposing)
         {
-            base.Dispose(disposing);
-
             if (!File.Exists(FullPath))
             {
                 return;

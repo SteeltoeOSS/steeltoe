@@ -47,19 +47,14 @@ namespace Steeltoe.Common.Utils.IO
         public void Dispose()
         {
             Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>
         /// Ensures the temporary path is deleted.
         /// </summary>
         /// <param name="disposing">If disposing.</param>
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                GC.SuppressFinalize(this);
-            }
-        }
+        protected abstract void Dispose(bool disposing);
 
         /// <summary>
         /// Subclasses should override and perform any path initialization here.
